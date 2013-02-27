@@ -5,7 +5,7 @@
 
 int main()
 {
-	_chdir("J:\\project\\fileIO\\test");
+	_chdir("J:\\project\\fileIO\\FileIO\\test");
 
 	string fn;
 	vector<int> vint;
@@ -13,6 +13,7 @@ int main()
 	vector<vector<double> > vs;
 
 	vector<string> vww;
+	vector<TestInt> tti;
 
 	fn="int.txt";
 
@@ -29,6 +30,11 @@ int main()
 
 	vww=fileIOclass::InVectorString("ss.txt");
 	fileIOclass::OutVectorString("sstem.txt",vww);
+
+	tti=fileIOclass::InVector<TestInt>("tem.txt");
+	fileIOclass::OutVector("t2",tti);
+
+
 	getchar();
 	return 0;
 }

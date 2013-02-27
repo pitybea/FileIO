@@ -2,10 +2,68 @@
 using namespace std;
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
+
+struct TestInt
+{
+	int elem;
+	TestInt()
+	{
+
+	};
+	static void initOne(FILE* fp,TestInt &t)
+	{
+		fscanf(fp,"%d",&t.elem);
+	};
+	static void printOne(FILE* fp, TestInt t)
+	{
+		fprintf(fp,"%d",t.elem);
+	};
+};
+
+
 
 class fileIOclass
 {
 public:
+	template<typename T>
+	static vector<T> InVector(string s)
+	{
+		vector<T> result;
+		FILE* fp;
+		fp=fopen(s.c_str(),"r");
+		int size;
+		fscanf(fp,"%d\n",&size);
+		T temt;
+		result.resize(size,temt);
+		for (int i=0;i<size;i++)
+		{
+			T::initOne(fp,result[i]);
+			fscanf(fp,"\n");
+		}
+
+		fclose(fp);
+
+		return result;
+	};
+
+	template<typename T>
+	static void OutVector(string s,vector<T> v)
+	{
+		FILE* fp;
+		fp=fopen(s.c_str(),"w");
+		int size(v.size());
+		fprintf(fp,"%d\n",size);
+
+		for (int i=0;i<size;i++)
+		{
+			T::printOne(fp,v[i]);
+			fprintf(fp,"\n");
+		}
+
+		fclose(fp);
+	}
+
 	static vector<int> InVectorInt(string s);
 	static void OutVectorInt(string s,vector<int> v);
 
