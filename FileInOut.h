@@ -84,5 +84,21 @@ public:
 
 	static vector<vector<double> > InVectorSDouble(string s,int dim);
 
+	template<typename T>
+	static void CombineFromFileList(string s,string extra,string out)
+	{
+		vector<string> files;
+		vector<T> result;
+		result.clear();
+		files=InVectorString(s);
+		for (int i=0;i<files.size();i++)
+		{
+			vector<T> temp;
+			temp=InVector<T>(files[i]+extra);
+			result.insert(result.end(),temp.begin(),temp.end());
+		}
+		OutVector<T>(out,result);
+	};
+
 
 };
