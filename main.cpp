@@ -5,8 +5,8 @@
 
 int main()
 {
-	_chdir("J:\\project\\fileIO\\FileIO\\test");
-
+	_chdir("E:\\uiucCars\\CarData\\TrainImages");
+	/*
 	string fn;
 	vector<int> vint;
 	vector<double> vdouble;
@@ -32,7 +32,7 @@ int main()
 	fileIOclass::OutVectorString("sstem.txt",vww);
 
 	tti=fileIOclass::InVector<TestInt>("tem.txt");
-	fileIOclass::OutVector("t2",tti);
+	fileIOclass::OutVector("t2",tti);*/
 
 
 	getchar();
