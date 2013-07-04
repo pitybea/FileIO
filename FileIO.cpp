@@ -1,5 +1,9 @@
 #include "FileInOut.h"
 
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+#pragma warning(disable: 4996) /* Disable deprecation */
 vector<int>  fileIOclass::InVectorInt(string s)
 {
 	vector<int> result;

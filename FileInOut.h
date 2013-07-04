@@ -3,6 +3,7 @@ using namespace std;
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#define _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES 1
 
 struct TestInt
 {
@@ -13,7 +14,7 @@ struct TestInt
 	};
 	static void initOne(FILE* fp,TestInt &t)
 	{
-		fscanf(fp,"%d",&t.elem);
+		fscanf_s(fp,"%d",&t.elem);
 	};
 	static void printOne(FILE* fp, TestInt t)
 	{
