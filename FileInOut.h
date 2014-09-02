@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 using namespace std;
 #include <stdlib.h>
@@ -27,7 +28,27 @@ struct TestInt
 class fileIOclass
 {
 public:
-	template<typename T>
+	template <typename F,typename T>
+	static void InVector(string s,F f,vector<T>& result)
+	{
+		
+		FILE* fp;
+		fp=fopen(s.c_str(),"r");
+		int size;
+		fscanf(fp,"%d\n",&size);
+		T temt;
+		result.resize(size,temt);
+		for (int i=0;i<size;i++)
+		{
+			f(fp,result[i]);
+			fscanf(fp,"\n");
+		}
+
+		fclose(fp);
+
+		//return result;
+	};
+	/*template<typename T>
 	static vector<T> InVector(string s)
 	{
 		vector<T> result;
@@ -46,7 +67,7 @@ public:
 		fclose(fp);
 
 		return result;
-	};
+	};*/
 
 	template<typename T>
 	static void OutVector(string s,vector<T> v)
@@ -75,10 +96,10 @@ public:
 	static void OutVectorString(string s,vector<string> v);
 
 	static vector<vector<int> > InVectorSInt(string s);
-	static void OutVectorSInt(string s,vector<vector<int> > v, bool secondDim);
+	static void OutVectorSInt(string s,vector<vector<int> > v, bool secondDim=true);
 
 	static vector<vector<double> > InVectorSDouble(string s);
-	static void OutVectorSDouble(string s,vector<vector<double> > v, bool scondDim);
+	static void OutVectorSDouble(string s,vector<vector<double> > v, bool scondDim=true);
 
 
 	static vector<vector<int> > InVectorSInt(string s, int dim);
